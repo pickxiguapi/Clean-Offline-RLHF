@@ -5,11 +5,6 @@ import torch.nn.functional as F
 import torch.utils.data as data
 import torch.optim as optim
 import torchvision.models as models
-import itertools
-import tqdm
-import copy
-import os
-import time
 import utils
 
 

@@ -16,4 +16,4 @@ normalize: true
 normalize_reward: false
 seed: 0
 tau: 0.005
-project: EnhancedRLHF
+project: Uni-RLHF

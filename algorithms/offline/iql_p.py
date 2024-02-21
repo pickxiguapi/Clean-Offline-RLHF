@@ -27,8 +27,6 @@ sys.path.append(APP_DIR+'/rlhf')
 from rlhf.reward_model import RewardModel, TransformerRewardModel
 from rlhf.utils import reward_from_preference
 
-
-os.environ["WANDB_MODE"] = "offline"
 TensorBatch = List[torch.Tensor]
 
 
@@ -535,6 +533,7 @@ def train(config: TrainConfig):
     
     # Note: add preference here!
     if config.reward_model_type == 'mlp':
+        print(111)
         reward_model = RewardModel(config.env, state_dim, action_dim, ensemble_size=3, lr=3e-4,
                                    activation="tanh", logger=None, device=config.device)
     elif config.reward_model_type == 'transformer':

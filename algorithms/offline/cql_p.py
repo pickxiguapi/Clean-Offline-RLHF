@@ -19,8 +19,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 import wandb
 
-os.environ["WANDB_MODE"] = "offline"
-
 TensorBatch = List[torch.Tensor]
 
 APP_DIR= os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

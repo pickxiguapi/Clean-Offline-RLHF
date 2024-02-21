@@ -20,7 +20,7 @@ seed: 888
 exp_name: transformer
 save_model: true
 use_wandb: false
-wandb_project: EnhancedRLHF
+wandb_project: Uni-RLHF
 wandb_entity: xiguapi
 
 

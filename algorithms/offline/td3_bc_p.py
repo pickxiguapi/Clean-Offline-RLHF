@@ -26,8 +26,6 @@ sys.path.append(APP_DIR+'/rlhf')
 from rlhf.reward_model import RewardModel, TransformerRewardModel
 from rlhf.utils import reward_from_preference
 
-
-os.environ["WANDB_MODE"] = "offline"
 @dataclass
 class TrainConfig:
     # Experiment
