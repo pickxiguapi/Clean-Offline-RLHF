@@ -19,6 +19,11 @@ This is the official PyTorch implementation of the paper "[Uni-RLHF: Universal P
     <br>
 <p>
 
+## 💡 News
+
+**[02-22-2024]** Initial code release.  
+**[03-20-2024]** Update detail setup bash files.
+
 ## 🛠️ Getting Started
 
 Clone this repository.
@@ -47,7 +52,7 @@ Note: for comparison and validation purposes, we provide fast track for scripted
 
 ### Pre-train Reward Models
 
-We provided an example of `CS-MLP` method for `walker2d-medium-expert-v2` task, and you can customize it in configuration file `rlhf/cfgs/default.yaml`.
+Here we provided an example of `CS-MLP` method for `walker2d-medium-expert-v2` task, and you can customize it in configuration file `rlhf/cfgs/default.yaml`.
 ```bash
 cd rlhf
 python train_reward_model.py domain=mujoco env=walker2d-medium-expert-v2 \
@@ -56,7 +61,13 @@ num_query=2000 len_query=200 data_dir="../crowdsource_human_labels" \
 seed=0 exp_name="CS-MLP"
 ```
 
-For more details training, see bash file `rlhf/scripts/train_mujoco.sh`.
+For more environment of reward model training, we provide the bash files:
+```bash
+cd rlhf
+bash scripts/train_mujoco.sh
+bash scripts/train_antmze.sh
+bash scripts/train_adroit.sh
+```
 
 ### Train Offline RL with Pre-trained Rewards 
 
@@ -65,12 +76,25 @@ Following Uni-RLHF codebase implemeration, we modified `IQL`, `CQL` and `TD3BC` 
 Example: Train `IQL` with `CS-MLP` reward model. The log will be uploaded to [wandb](https://wandb.ai/site).
 ```bash
 python algorithms/offline/iql_p.py --device "cuda:0" --seed 0 \
---reward_model_path "path/to/reward_model" --config_path ./configs/offline/iql/walker/ medium_expert_v2.yaml \
+--reward_model_path "path/to/reward_model" --config_path ./configs/offline/iql/walker/medium_expert_v2.yaml \
 --reward_model_type mlp --seed 0 --name CS-MLP-IQL-Walker-medium-expert-v2
-
 ```
 
-For more details training, see bash file `scripts/run_mujoco.sh`.
+You can have any combination of algorithms, label types and reward model types:
+
+| Algorithm | Label Type | Reward Model Type |
+|-----------|------------|-------------------|
+| IQL       | CS         | MLP               |
+| CQL       | ST         | TFM               |
+| TD3BC     |            | CNN               |
+
+
+For more environment of policy training, we provide the bash files:
+```bash
+bash scripts/run_mujoco.sh
+bash scripts/run_antmze.sh
+bash scripts/run_adroit.sh
+```
 
 <!-- LICENSE -->
 ## 🏷️ License
