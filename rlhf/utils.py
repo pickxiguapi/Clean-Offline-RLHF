@@ -173,7 +173,7 @@ class PrefTransformer1(nn.Module):
         d_model: int = 256, nhead: int = 4, num_layers: int = 1, 
     ):
         super().__init__()
-        max_seq_len = 200
+        self.max_seq_len = max_seq_len
         self.d_model = d_model
         self.pos_emb = SinusoidalPosEmb(d_model)
         
@@ -190,7 +190,7 @@ class PrefTransformer1(nn.Module):
             nn.TransformerEncoderLayer(d_model, nhead, d_model * 4, batch_first=True), 
             num_layers
         )
-        self.mask = nn.Transformer.generate_square_subsequent_mask(2*max_seq_len)
+        self.mask = nn.Transformer.generate_square_subsequent_mask(2*self.max_seq_len)
         
         self.q_proj = nn.Linear(d_model, d_model)
         self.k_proj = nn.Linear(d_model, d_model)

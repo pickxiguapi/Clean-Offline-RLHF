@@ -17,7 +17,7 @@ name: IQL
 normalize: true
 normalize_reward: true
 qf_lr: 3e-4
-project: CORL
+project: Uni-RLHF
 seed: 0
 tau: 0.005
 vf_lr: 3e-4

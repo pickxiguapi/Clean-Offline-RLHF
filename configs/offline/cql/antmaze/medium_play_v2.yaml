@@ -26,7 +26,7 @@ normalize: false
 normalize_reward: true
 orthogonal_init: true
 policy_lr: 0.0001
-project: CORL
+project: Uni-RLHF
 qf_lr: 0.0003
 seed: 0
 soft_target_update_rate: 0.005

@@ -1,58 +1,235 @@
 #!/bin/bash
+# export WANDB_API_KEY='***'
+export WANDB_MODE='online'
 
+################### CS-MLP ######################
+
+# # CS-MLP-Antmaze-umaze-v2
 # for ((seed=0; seed<3; seed+=1))
 # do
+#     name=CS-MLP-IQL-Antmaze-umaze-v2
+#     mkdir -p ./logs/$name
+#     device="cuda:0"
+#     env_type=antmaze
+#     dataset=umaze_v2
+#     reward_model_path="./rlhf/reward_model_logs/antmaze-umaze-v2/CS-MLP/epoch_300_query_2000_len_200_seed_999/models/reward_model.pt"
+#     reward_model_type=mlp
+#     config_path=./configs/offline/iql/$env_type/$dataset.yaml
+#     nohup python -u algorithms/offline/iql_p.py --device $device --seed $seed \
+#     --reward_model_path $reward_model_path --config_path $config_path \
+#     --reward_model_type $reward_model_type --seed $seed --name $name \
+#     >./logs/$name/$seed.log 2>&1 &
+
+#     echo "$name $seed training start!"
+# done
+
+# # CS-MLP-Antmaze-umaze-diverse-v2
+# for ((seed=0; seed<3; seed+=1))
+# do
+#     name=CS-MLP-IQL-Antmaze-umaze-diverse-v2
+#     mkdir -p ./logs/$name
+#     device="cuda:1"
+#     env_type=antmaze
+#     dataset=umaze_diverse_v2
+#     reward_model_path="./rlhf/reward_model_logs/antmaze-umaze-diverse-v2/CS-MLP/epoch_300_query_2000_len_200_seed_999/models/reward_model.pt"
+#     reward_model_type=mlp
+#     config_path=./configs/offline/iql/$env_type/$dataset.yaml
+#     nohup python -u algorithms/offline/iql_p.py --device $device --seed $seed \
+#     --reward_model_path $reward_model_path --config_path $config_path \
+#     --reward_model_type $reward_model_type --seed $seed --name $name \
+#     >./logs/$name/$seed.log 2>&1 &
+
+#     echo "$name $seed training start!"
+# done
+
+# # CS-MLP-Antmaze-medium-play-v2
+# for ((seed=0; seed<3; seed+=1))
+# do
+#     name=CS-MLP-IQL-Antmaze-medium-play-v2
+#     mkdir -p ./logs/$name
+#     device="cuda:2"
+#     env_type=antmaze
+#     dataset=medium_play_v2
+#     reward_model_path="./rlhf/reward_model_logs/antmaze-medium-play-v2/CS-MLP/epoch_300_query_2000_len_200_seed_999/models/reward_model.pt"
+#     reward_model_type=mlp
+#     config_path=./configs/offline/iql/$env_type/$dataset.yaml
+#     nohup python -u algorithms/offline/iql_p.py --device $device --seed $seed \
+#     --reward_model_path $reward_model_path --config_path $config_path \
+#     --reward_model_type $reward_model_type --seed $seed --name $name \
+#     >./logs/$name/$seed.log 2>&1 &
+
+#     echo "$name $seed training start!"
+# done
+
+# # CS-MLP-Antmaze-medium-diverse-v2
+# for ((seed=0; seed<3; seed+=1))
+# do
+#     name=CS-MLP-IQL-Antmaze-medium-diverse-v2
+#     mkdir -p ./logs/$name
+#     device="cuda:3"
+#     env_type=antmaze
+#     dataset=medium_diverse_v2
+#     reward_model_path="./rlhf/reward_model_logs/antmaze-medium-diverse-v2/CS-MLP/epoch_300_query_2000_len_200_seed_999/models/reward_model.pt"
+#     reward_model_type=mlp
+#     config_path=./configs/offline/iql/$env_type/$dataset.yaml
+#     nohup python -u algorithms/offline/iql_p.py --device $device --seed $seed \
+#     --reward_model_path $reward_model_path --config_path $config_path \
+#     --reward_model_type $reward_model_type --seed $seed --name $name \
+#     >./logs/$name/$seed.log 2>&1 &
+
+#     echo "$name $seed training start!"
+# done
+
+# # CS-MLP-Antmaze-large-play-v2
+# for ((seed=0; seed<3; seed+=1))
+# do
+#     name=CS-MLP-IQL-Antmaze-large-play-v2
+#     mkdir -p ./logs/$name
 #     device="cuda:4"
-#     env=antmaze-large-diverse-v2
-#     reward_model_path="/home/ubuntu/zhaokai/Offline-RLHF-corl/preference/reward_model_logs/antmaze-large-diverse-v2/vanilla/epoch_50_query_2000_len_200_seed_0/models/reward_model.pt"
-#     nohup python iql_p.py --seed $seed --env $env --group $env --reward_model_path $reward_model_path --device $device >output_train_iql_p_antmaze-large-diverse-v2_seed$seed.txt 2>&1 &
+#     env_type=antmaze
+#     dataset=large_play_v2
+#     reward_model_path="./rlhf/reward_model_logs/antmaze-large-play-v2/CS-MLP/epoch_300_query_2000_len_200_seed_999/models/reward_model.pt"
+#     reward_model_type=mlp
+#     config_path=./configs/offline/iql/$env_type/$dataset.yaml
+#     nohup python -u algorithms/offline/iql_p.py --device $device --seed $seed \
+#     --reward_model_path $reward_model_path --config_path $config_path \
+#     --reward_model_type $reward_model_type --seed $seed --name $name \
+#     >./logs/$name/$seed.log 2>&1 &
+
+#     echo "$name $seed training start!"
 # done
 
+# # CS-MLP-Antmaze-large-diverse-v2
 # for ((seed=0; seed<3; seed+=1))
 # do
+#     name=CS-MLP-IQL-Antmaze-large-diverse-v2
+#     mkdir -p ./logs/$name
 #     device="cuda:5"
-#     env=antmaze-large-play-v2
-#     reward_model_path="/home/ubuntu/zhaokai/Offline-RLHF-corl/preference/reward_model_logs/antmaze-large-play-v2/vanilla/epoch_50_query_2000_len_200_seed_0/models/reward_model.pt"
-#     nohup python iql_p.py --seed $seed --env $env --group $env --reward_model_path $reward_model_path --device $device >output_train_iql_p_antmaze-large-play-v2_seed$seed.txt 2>&1 &
+#     env_type=antmaze
+#     dataset=large_diverse_v2
+#     reward_model_path="./rlhf/reward_model_logs/antmaze-large-diverse-v2/CS-MLP/epoch_300_query_2000_len_200_seed_999/models/reward_model.pt"
+#     reward_model_type=mlp
+#     config_path=./configs/offline/iql/$env_type/$dataset.yaml
+#     nohup python -u algorithms/offline/iql_p.py --device $device --seed $seed \
+#     --reward_model_path $reward_model_path --config_path $config_path \
+#     --reward_model_type $reward_model_type --seed $seed --name $name \
+#     >./logs/$name/$seed.log 2>&1 &
+
+#     echo "$name $seed training start!"
 # done
 
+################### CS-TFM ######################
+
+# CS-TFM-Antmaze-umaze-v2
+for ((seed=0; seed<3; seed+=1))
+do
+    name=CS-TFM-IQL-Antmaze-umaze-v2
+    mkdir -p ./logs/$name
+    device="cuda:0"
+    env_type=antmaze
+    dataset=umaze_v2
+    reward_model_path="./rlhf/reward_model_logs/antmaze-umaze-v2/CS-TFM/epoch_300_query_2000_len_200_seed_999/models/reward_model.pt"
+    reward_model_type=transformer
+    config_path=./configs/offline/iql/$env_type/$dataset.yaml
+    nohup python -u algorithms/offline/iql_p.py --device $device --seed $seed \
+    --reward_model_path $reward_model_path --config_path $config_path \
+    --reward_model_type $reward_model_type --seed $seed --name $name \
+    >./logs/$name/$seed.log 2>&1 &
+
+    echo "$name $seed training start!"
+done
+
+# # CS-TFM-Antmaze-umaze-diverse-v2
 # for ((seed=0; seed<3; seed+=1))
 # do
+#     name=CS-TFM-IQL-Antmaze-umaze-diverse-v2
+#     mkdir -p ./logs/$name
+#     device="cuda:1"
+#     env_type=antmaze
+#     dataset=umaze_diverse_v2
+#     reward_model_path="./rlhf/reward_model_logs/antmaze-umaze-diverse-v2/CS-TFM/epoch_300_query_2000_len_200_seed_999/models/reward_model.pt"
+#     reward_model_type=transformer
+#     config_path=./configs/offline/iql/$env_type/$dataset.yaml
+#     nohup python -u algorithms/offline/iql_p.py --device $device --seed $seed \
+#     --reward_model_path $reward_model_path --config_path $config_path \
+#     --reward_model_type $reward_model_type --seed $seed --name $name \
+#     >./logs/$name/$seed.log 2>&1 &
+
+#     echo "$name $seed training start!"
+# done
+
+# CS-TFM-Antmaze-medium-play-v2
+for ((seed=0; seed<3; seed+=1))
+do
+    name=CS-TFM-IQL-Antmaze-medium-play-v2
+    mkdir -p ./logs/$name
+    device="cuda:2"
+    env_type=antmaze
+    dataset=medium_play_v2
+    reward_model_path="./rlhf/reward_model_logs/antmaze-medium-play-v2/CS-TFM/epoch_300_query_2000_len_200_seed_999/models/reward_model.pt"
+    reward_model_type=transformer
+    config_path=./configs/offline/iql/$env_type/$dataset.yaml
+    nohup python -u algorithms/offline/iql_p.py --device $device --seed $seed \
+    --reward_model_path $reward_model_path --config_path $config_path \
+    --reward_model_type $reward_model_type --seed $seed --name $name \
+    >./logs/$name/$seed.log 2>&1 &
+
+    echo "$name $seed training start!"
+done
+
+# CS-TFM-Antmaze-medium-diverse-v2
+for ((seed=0; seed<3; seed+=1))
+do
+    name=CS-TFM-IQL-Antmaze-medium-diverse-v2
+    mkdir -p ./logs/$name
+    device="cuda:3"
+    env_type=antmaze
+    dataset=medium_diverse_v2
+    reward_model_path="./rlhf/reward_model_logs/antmaze-medium-diverse-v2/CS-TFM/epoch_300_query_2000_len_200_seed_999/models/reward_model.pt"
+    reward_model_type=transformer
+    config_path=./configs/offline/iql/$env_type/$dataset.yaml
+    nohup python -u algorithms/offline/iql_p.py --device $device --seed $seed \
+    --reward_model_path $reward_model_path --config_path $config_path \
+    --reward_model_type $reward_model_type --seed $seed --name $name \
+    >./logs/$name/$seed.log 2>&1 &
+
+    echo "$name $seed training start!"
+done
+
+# # CS-TFM-Antmaze-large-play-v2
+# for ((seed=0; seed<3; seed+=1))
+# do
+#     name=CS-TFM-IQL-Antmaze-large-play-v2
+#     mkdir -p ./logs/$name
 #     device="cuda:4"
-#     env=antmaze-medium-diverse-v2
-#     reward_model_path="/home/ubuntu/zhaokai/Offline-RLHF-corl/preference/reward_model_logs/antmaze-medium-diverse-v2/vanilla/epoch_50_query_2000_len_200_seed_0/models/reward_model.pt"
-#     nohup python iql_p.py --seed $seed --env $env --group $env --reward_model_path $reward_model_path --device $device >output_train_iql_p_antmaze-medium-diverse-v2_seed$seed.txt 2>&1 &
+#     env_type=antmaze
+#     dataset=large_play_v2
+#     reward_model_path="./rlhf/reward_model_logs/antmaze-large-play-v2/CS-TFM/epoch_300_query_2000_len_200_seed_999/models/reward_model.pt"
+#     reward_model_type=transformer
+#     config_path=./configs/offline/iql/$env_type/$dataset.yaml
+#     nohup python -u algorithms/offline/iql_p.py --device $device --seed $seed \
+#     --reward_model_path $reward_model_path --config_path $config_path \
+#     --reward_model_type $reward_model_type --seed $seed --name $name \
+#     >./logs/$name/$seed.log 2>&1 &
+
+#     echo "$name $seed training start!"
 # done
 
-
+# # CS-TFM-Antmaze-large-diverse-v2
 # for ((seed=0; seed<3; seed+=1))
 # do
+#     name=CS-TFM-IQL-Antmaze-large-diverse-v2
+#     mkdir -p ./logs/$name
 #     device="cuda:5"
-#     env=antmaze-medium-play-v2
-#     reward_model_path="/home/ubuntu/zhaokai/Offline-RLHF-corl/preference/reward_model_logs/antmaze-medium-play-v2/vanilla/epoch_50_query_2000_len_200_seed_0/models/reward_model.pt"
-#     nohup python iql_p.py --seed $seed --env $env --group $env --reward_model_path $reward_model_path --device $device >output_train_iql_p_antmaze-medium-play-v2_seed$seed.txt 2>&1 &
+#     env_type=antmaze
+#     dataset=large_diverse_v2
+#     reward_model_path="./rlhf/reward_model_logs/antmaze-large-diverse-v2/CS-TFM/epoch_300_query_2000_len_200_seed_999/models/reward_model.pt"
+#     reward_model_type=transformer
+#     config_path=./configs/offline/iql/$env_type/$dataset.yaml
+#     nohup python -u algorithms/offline/iql_p.py --device $device --seed $seed \
+#     --reward_model_path $reward_model_path --config_path $config_path \
+#     --reward_model_type $reward_model_type --seed $seed --name $name \
+#     >./logs/$name/$seed.log 2>&1 &
+
+#     echo "$name $seed training start!"
 # done
-
-# for ((seed=0; seed<3; seed+=1))
-# do
-#     device="cuda:4"
-#     env=antmaze-umaze-diverse-v2
-#     reward_model_path="/home/ubuntu/zhaokai/Offline-RLHF-corl/preference/reward_model_logs/antmaze-umaze-diverse-v2/vanilla/epoch_50_query_2000_len_200_seed_0/models/reward_model.pt"
-#     nohup python iql_p.py --seed $seed --env $env --group $env --reward_model_path $reward_model_path --device $device >output_train_iql_p_antmaze-umaze-diverse-v2_seed$seed.txt 2>&1 &
-# done
-
-
-# for ((seed=0; seed<3; seed+=1))
-# do
-#     device="cuda:5"
-#     env=antmaze-umaze-v2
-#     reward_model_path="/home/ubuntu/zhaokai/Offline-RLHF-corl/preference/reward_model_logs/antmaze-umaze-v2/vanilla/epoch_50_query_2000_len_200_seed_0/models/reward_model.pt"
-#     nohup python iql_p.py --seed $seed --env $env --group $env --reward_model_path $reward_model_path --device $device >output_train_iql_p_antmaze-umaze-v2_seed$seed.txt 2>&1 &
-# done
-
-
-device="cuda:7"
-env=antmaze-medium-play-v2
-seed=0
-reward_model_path="/home/ubuntu/dzb/Offline-RLHF/preference/reward_model_logs/antmaze-medium-play-v2/transformer/epoch_100_query_2000_len_200_seed_888/models/reward_model.pt"
-nohup python -u ../iql_p.py --seed $seed --env $env --group $env --reward_model_path $reward_model_path --device $device &

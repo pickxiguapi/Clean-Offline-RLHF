@@ -15,7 +15,7 @@ n_episodes: 100
 name: IQL
 normalize: true
 normalize_reward: false
-project: CORL
+project: Uni-RLHF
 seed: 0
 tau: 0.005
 

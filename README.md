@@ -60,7 +60,7 @@ For more details training, see bash file `rlhf/scripts/train_mujoco.sh`.
 
 ### Train Offline RL with Pre-trained Rewards 
 
-Following CORL codebase implemeration, we modified `IQL`, `CQL` and `TD3BC` algorithm.
+Following Uni-RLHF codebase implemeration, we modified `IQL`, `CQL` and `TD3BC` algorithm.
 
 Example: Train `IQL` with `CS-MLP` reward model. The log will be uploaded to [wandb](https://wandb.ai/site).
 ```bash

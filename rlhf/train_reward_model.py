@@ -219,12 +219,12 @@ def train(cfg):
     if cfg.modality == "state":
         if cfg.structure == 'mlp':
             reward_model = RewardModel(cfg.env, observation_dim, action_dim, ensemble_size=cfg.ensemble_size, lr=3e-4,
-                                    activation="tanh", logger=L, device="cuda:7")
+                                    activation="tanh", logger=L, device="cuda:0")
         elif "transformer" in cfg.structure:
             reward_model = TransformerRewardModel(
                 cfg.env, observation_dim, action_dim, ensemble_size=cfg.ensemble_size, lr=5e-5,
                 structure_type=cfg.structure, d_model=cfg.d_model, num_layers=cfg.num_layers, nhead=cfg.nhead, max_seq_len=cfg.max_seq_len,
-                activation="tanh", logger=L, device="cuda:7")
+                activation="tanh", logger=L, device="cuda:0")
 
         pref_dataset = load_queries_with_indices(
             dataset, cfg.num_query, cfg.len_query, saved_indices=[human_indices_1, human_indices_2],
