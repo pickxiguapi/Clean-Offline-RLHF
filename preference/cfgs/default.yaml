@@ -1,0 +1,26 @@
+# environment
+domain: smarts
+env: cut_in
+#env: left_c, cut_in, cruise
+fake_label: true
+modality: 'state'  # state/pixel
+clip_action: 0.999
+stack: false
+structure: mlp
+
+# learning
+ensemble_size: 3
+batch_size: 64
+n_epochs: 1000
+num_query: 2000
+len_query: 50
+data_dir: path/to/label
+raw_dataset_dir: path/to/raw/data
+
+seed: 888
+exp_name: transformer
+save_model: true
+use_wandb: false
+wandb_project: EnhancedRLHF
+wandb_entity: your_entity
+
