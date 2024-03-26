@@ -21,8 +21,12 @@ This is the official PyTorch implementation of the paper "[Uni-RLHF: Universal P
 
 ## 💡 News
 
-**[02-22-2024]** Initial code release.  
-**[03-20-2024]** Update detail setup bash files.
+- **[03-26-2024]** 🔥 Update Mini-Uni-RLHF, a minimal out-of-the-box annotation tool for researchers, powered by [streamlit](https://streamlit.io/).  
+- **[03-24-2024]** Release of [SMARTS](https://github.com/huawei-noah/SMARTS) environment training dataset, scripts and labels. You can find it 
+in the [smarts branch](https://github.com/pickxiguapi/Clean-Offline-RLHF/tree/smarts).
+- **[03-20-2024]** Update detail setup bash files.  
+- **[02-22-2024]** Initial code release.    
+
 
 ## 🛠️ Getting Started
 
